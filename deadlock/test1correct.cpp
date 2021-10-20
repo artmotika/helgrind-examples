@@ -1,14 +1,13 @@
 #include <iostream>
 #include <pthread.h>
-
 using namespace std;
 
 pthread_mutex_t m1 = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t m2 = PTHREAD_MUTEX_INITIALIZER;
 
 void *function1(void *data) {
-    pthread_mutex_lock(&m2);
     pthread_mutex_lock(&m1);
+    pthread_mutex_lock(&m2);
     cout << "thread1" << endl;
     pthread_mutex_unlock(&m1);
     pthread_mutex_unlock(&m2);
